@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+
+</body> 
+<script>
+//创建对象的方法在js高级中具有5种方式 
+// ******第一种：一般模式
+var o={};//常见了一个空的对象，
+o.name="小马";//给对象添加属性
+o.sayName=function(){//给对象添加方法
+      console.log(this.name);
+}
+var h1=document.createElement("h1");//调用对象的属性并输出
+h1.innerHTML=o.name;
+var bo=document.getElementsByTagName("body")[0].appendChild(h1);
+//*****工厂模式
+//工厂模式通过创建一个包含对象细节的函数来创建对象，然后返回这个对象
+  function obj(name){
+     var sd=new Object();
+     sd.name=name;
+     sd.sayName=function(){
+         console.log(name);
+
+     }
+     return sd;
+  }
+  var ob=obj("小马1");
+  ob.sayName();
+  //*****通过构造函数来创建对象
+ //构造函数不需要借助中间变量，并且可以将构造函数标识标识为一种特定的类型
+ function obje(name){
+     this.name=name;
+     this.sayName=function(){
+         console.log(this.name);
+     }
+ }
+ var p1=new obje("小明");
+ p1.sayName();
+//*****原型模式
+function person(name){
+    person.prototype.name=name;
+    person.prototype.sayName=function(){
+       console.log(this.name);
+
+    }
+}
+var p2=new person("笑话");
+p2.sayName();
+//******构造混合模式
+function person1(name){
+    this.name=name;
+
+}
+person1.prototype.sayName=function(){
+    console.log(this.name);
+}
+var p3=new person1("下");
+p3.sayName();
+
+
+    </script>
+</html>
